@@ -28,7 +28,6 @@ coverage/
 .env*.local
 client/.env
 api/.env
-
 # API Uploads & Temp Files
 api/uploads/
 api/tmp_transcriptions/
