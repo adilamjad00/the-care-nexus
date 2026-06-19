@@ -1,0 +1,786 @@
+@import 'tailwindcss';
+
+/* =============================================================================
+   CareNexus Design System — Blue Sky Theme
+   Reference: Healthcare dashboard with soft #EFF4FB canvas, white cards,
+   blue (#6985FF) primary, sky-blue (#6ABFF3) accents, deep-navy (#081C44) text.
+   Font: Plus Jakarta Sans (loaded as --font-inter) — Aspekta-equivalent.
+   ============================================================================= */
+
+@theme {
+  /* ── Fonts ───────────────────────────────────────────────────── */
+  --font-sans:
+    var(--font-inter), 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), 'Fraunces', ui-serif, Georgia, serif;
+  --font-display: var(--font-fraunces), 'Fraunces', ui-serif, Georgia, serif;
+  --font-urdu:
+    var(--font-baloo-urdu), var(--font-noto-urdu), var(--font-inter), sans-serif;
+
+  /* ── Primary — brand blue (royal blue #6985FF) ───────────────── */
+  --color-primary: #6985ff;
+  --color-primary-hover: #546fff;
+  --color-primary-light: rgba(105, 133, 255, 0.15);
+  --color-primary-muted: rgba(105, 133, 255, 0.08);
+  --color-primary-bg: rgba(105, 133, 255, 0.05);
+
+  /* ── Sky / light-blue accent ─────────────────────────────────── */
+  --color-sky: #6abff3;
+  --color-sky-light: #c5e4f8;
+  --color-sky-muted: rgba(106, 191, 243, 0.15);
+  --color-sky-bg: rgba(106, 191, 243, 0.08);
+
+  /* ── Royal blue (info / secondary brand) ────────────────────── */
+  --color-royal: #6985ff;
+  --color-royal-light: rgba(105, 133, 255, 0.15);
+
+  /* ── Semantic accents (from palette) ────────────────────────── */
+  --color-success: #9ae072;
+  --color-warning: #eee260;
+  --color-danger: #f87171;
+  --color-info: #6985ff;
+
+  /* ── Page canvas ─────────────────────────────────────────────── */
+  --color-background: #eff4fb;
+  --color-white: #ffffff;
+  --color-black: #081c44;
+
+  /* ── Surfaces ────────────────────────────────────────────────── */
+  --color-surface: #f0f5ff;
+  --color-surface-white: #ffffff;
+  --color-surface-card: #ffffff;
+  --color-surface-overlay: rgba(8, 28, 68, 0.03);
+
+  /* ── Sidebar ─────────────────────────────────────────────────── */
+  --color-sidebar-bg: #ffffff;
+  --color-sidebar-border: rgba(105, 133, 255, 0.08);
+  --color-sidebar-text: #6b7b9c;
+  --color-sidebar-text-active: #6985ff;
+  --color-sidebar-active-bg: rgba(105, 133, 255, 0.08);
+
+  /* ── Topbar ──────────────────────────────────────────────────── */
+  --color-topbar-bg: rgba(239, 244, 251, 0.92);
+  --color-topbar-border: rgba(105, 133, 255, 0.08);
+
+  /* ── Card ────────────────────────────────────────────────────── */
+  --color-card-bg: #ffffff;
+  --color-card-border: rgba(105, 133, 255, 0.1);
+
+  /* ── Text ────────────────────────────────────────────────────── */
+  --color-text-primary: #081c44;
+  --color-text-secondary: #6b7b9c;
+  --color-text-muted: #9bacc8;
+  --color-foreground: #081c44;
+
+  /* ── Borders ─────────────────────────────────────────────────── */
+  --color-border: rgba(105, 133, 255, 0.12);
+  --color-border-light: rgba(105, 133, 255, 0.07);
+  --color-border-card: rgba(105, 133, 255, 0.1);
+}
+
+/* =============================================================================
+   Base
+   ============================================================================= */
+html {
+  background: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(
+      120% 120% at 0% 0%,
+      #e2edf9 0%,
+      #eff6fc 50%,
+      #f5fafe 100%
+    )
+    no-repeat;
+  background-attachment: fixed;
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'ss01', 'ss02';
+}
+
+/* =============================================================================
+   Typography
+   — h1/h2/h3 use the serif display font; h4–h6 use sans.
+   — All body text inherits --font-sans (Plus Jakarta Sans / Aspekta-equivalent).
+   ============================================================================= */
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+    font-optical-sizing: auto;
+    color: var(--color-text-primary);
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+  }
+}
+
+.font-display {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+
+.font-urdu {
+  font-family: var(--font-baloo-urdu), var(--font-noto-urdu), serif;
+}
+
+[lang='ur'],
+[dir='rtl'],
+.font-urdu {
+  font-family: var(--font-baloo-urdu), var(--font-noto-urdu), serif !important;
+  line-height: 1.8;
+}
+
+/* =============================================================================
+   Form controls
+   ============================================================================= */
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='tel'],
+input[type='number'],
+input[type='search'],
+input[type='url'],
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+textarea,
+select {
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  border: 1px solid var(--color-border-light);
+  outline: none;
+  background: #ffffff;
+  color: var(--color-text-primary);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: var(--color-primary);
+}
+
+button {
+  font-family: var(--font-sans);
+}
+
+button:not(:disabled),
+[role='button']:not([aria-disabled='true']),
+a {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+/* =============================================================================
+   Sidebar  (lens-sidebar classes — used by Doctor/Patient/Clinic sidebars)
+   ============================================================================= */
+.lens-sidebar {
+  flex-direction: column;
+  width: 230px;
+  flex-shrink: 0;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 1.5rem 1rem;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 4px 0 24px rgba(105, 133, 255, 0.02);
+  transition: width 0.2s ease;
+  overflow: visible;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+}
+
+.scroll-me {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+}
+
+.lens-sidebar-collapsed {
+  width: 72px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.lens-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Nav items */
+.lens-sidebar nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lens-sidebar nav::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 28px;
+  /* aligns with center of 40px icon circle relative to nav container */
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(105, 133, 255, 0.15) 0%,
+    rgba(105, 133, 255, 0.02) 100%
+  );
+  z-index: 0;
+}
+
+.lens-sidebar-collapsed nav::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.lens-nav-item,
+.lens-nav-item-active {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 4px 0.5rem;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-sidebar-text);
+  transition: color 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+
+.lens-nav-item svg,
+.lens-nav-item-active svg {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 11px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  color: var(--color-sidebar-text);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.lens-nav-item-active svg {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(105, 133, 255, 0.3) !important;
+}
+
+.lens-nav-item:hover svg {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-color: rgba(105, 133, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.lens-nav-item-active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.lens-nav-item:hover {
+  color: var(--color-primary);
+}
+
+.lens-section-label {
+  padding: 0 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+
+/* =============================================================================
+   Topbar
+   ============================================================================= */
+.lens-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 1.75rem;
+  background: var(--color-topbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-topbar-border);
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+/* =============================================================================
+   Cards  (lens-card / Card component)
+   ============================================================================= */
+.lens-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.03),
+    0 1px 3px rgba(105, 133, 255, 0.02);
+  padding: 1.5rem;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.lens-card:hover {
+  box-shadow:
+    0 12px 40px rgba(31, 38, 135, 0.06),
+    0 2px 6px rgba(105, 133, 255, 0.03);
+  transform: translateY(-2px);
+}
+
+/* =============================================================================
+   Buttons
+   ============================================================================= */
+
+/* Primary — solid blue */
+.lens-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.375rem;
+  height: 2.5rem;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.lens-btn-primary:hover {
+  background: var(--color-primary-hover);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.36);
+  transform: translateY(-1px);
+}
+
+.lens-btn-primary:active {
+  transform: translateY(0);
+  opacity: 0.92;
+}
+
+.lens-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Ghost / icon */
+.lens-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-light);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.lens-btn-icon:hover {
+  background: var(--color-primary-muted);
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+/* =============================================================================
+   Input
+   ============================================================================= */
+.lens-input {
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  background: #ffffff;
+  border: 1.5px solid var(--color-border-light);
+  border-radius: 10px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.lens-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.lens-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Search input variant */
+.lens-search {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(37, 99, 235, 0.1);
+  border-radius: 999px;
+  padding-left: 2.75rem;
+  /* space for icon */
+}
+
+.lens-search:focus {
+  background: #ffffff;
+  border-color: var(--color-sky);
+  box-shadow: 0 0 0 3px rgba(106, 191, 243, 0.18);
+}
+
+/* =============================================================================
+   Badges
+   ============================================================================= */
+.lens-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.lens-badge-pending {
+  background: rgba(238, 226, 96, 0.18);
+  color: #92780e;
+  border-color: rgba(238, 226, 96, 0.35);
+}
+
+.lens-badge-active,
+.lens-badge-confirmed {
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.18);
+}
+
+.lens-badge-success,
+.lens-badge-completed {
+  background: rgba(154, 224, 114, 0.18);
+  color: #3a7a1a;
+  border-color: rgba(154, 224, 114, 0.4);
+}
+
+.lens-badge-danger,
+.lens-badge-cancelled {
+  background: rgba(248, 113, 113, 0.12);
+  color: #c0392b;
+  border-color: rgba(248, 113, 113, 0.25);
+}
+
+.lens-badge-info {
+  background: rgba(105, 133, 255, 0.12);
+  color: #3d52c5;
+  border-color: rgba(105, 133, 255, 0.25);
+}
+
+/* =============================================================================
+   Stat / KPI Cards  (dashboard summary cards)
+   ============================================================================= */
+.stat-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.03);
+  padding: 1.375rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.06);
+  transform: translateY(-2px);
+}
+
+.stat-card-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--color-sky-bg);
+  color: var(--color-primary);
+}
+
+.stat-card-icon-blue {
+  background: rgba(105, 133, 255, 0.12);
+  color: #6985ff;
+}
+
+.stat-card-icon-sky {
+  background: rgba(106, 191, 243, 0.15);
+  color: #1e88bf;
+}
+
+.stat-card-icon-green {
+  background: rgba(154, 224, 114, 0.18);
+  color: #3a7a1a;
+}
+
+.stat-card-icon-amber {
+  background: rgba(238, 226, 96, 0.2);
+  color: #8a6e10;
+}
+
+.stat-card-trend-up {
+  color: #3a7a1a;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.stat-card-trend-down {
+  color: #c0392b;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* =============================================================================
+   Chart wrappers  (used in analytics / revenue)
+   ============================================================================= */
+.chart-container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.03);
+  padding: 1.5rem;
+}
+
+/* =============================================================================
+   Animations
+   ============================================================================= */
+.animate-in {
+  animation: cn-fade-up 0.24s ease both;
+}
+
+@keyframes cn-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scale-in {
+  animation: cn-scale-in 0.18s ease both;
+}
+
+@keyframes cn-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =============================================================================
+   Scrollbar (subtle styling)
+   ============================================================================= */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.32);
+}
+
+/* =============================================================================
+   Recharts tooltips
+   ============================================================================= */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #081c44 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25) !important;
+  padding: 0.875rem 1.25rem !important;
+}
+
+.recharts-tooltip-wrapper .recharts-tooltip-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin-bottom: 0.375rem !important;
+}
+
+.recharts-tooltip-wrapper .recharts-tooltip-item {
+  color: #ffffff !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  padding: 0.125rem 0 !important;
+}
+
+/* =============================================================================
+   Urdu / RTL overrides
+   ============================================================================= */
+html[lang='ur'],
+html[data-lang='ur'] {
+  --font-sans:
+    var(--font-baloo-urdu), var(--font-noto-urdu), var(--font-inter), sans-serif;
+  --font-display: var(--font-baloo-urdu), var(--font-noto-urdu), sans-serif;
+  --font-serif: var(--font-baloo-urdu), var(--font-noto-urdu), sans-serif;
+}
+
+[data-lang='ur'] body,
+[data-lang='ur'] h1,
+[data-lang='ur'] h2,
+[data-lang='ur'] h3,
+[data-lang='ur'] h4,
+[data-lang='ur'] h5,
+[data-lang='ur'] h6,
+[data-lang='ur'] p,
+[data-lang='ur'] span,
+[data-lang='ur'] div,
+[data-lang='ur'] button,
+[data-lang='ur'] input,
+[data-lang='ur'] textarea,
+[data-lang='ur'] select,
+[data-lang='ur'] label {
+  font-family:
+    var(--font-baloo-urdu), var(--font-noto-urdu), system-ui, sans-serif !important;
+}
+
+[data-lang='ur'] * {
+  line-height: 1.6;
+}
+
+[data-lang='ur'] h1 {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+[data-lang='ur'] h2 {
+  font-size: 1.08em;
+  line-height: 1.5;
+}
+
+[data-lang='ur'] h3 {
+  font-size: 1.05em;
+  line-height: 1.5;
+}
+
+[data-lang='ur'] h4,
+[data-lang='ur'] h5,
+[data-lang='ur'] h6 {
+  font-size: 1.02em;
+  line-height: 1.5;
+}
+
+[data-lang='ur'] p,
+[data-lang='ur'] div,
+[data-lang='ur'] span,
+[data-lang='ur'] li {
+  font-size: 1em;
+  line-height: 1.7;
+}
+
+[data-lang='ur'] button,
+[data-lang='ur'] input,
+[data-lang='ur'] textarea,
+[data-lang='ur'] select,
+[data-lang='ur'] label {
+  font-size: 1em;
+}
+
+/* =============================================================================
+   Responsive helpers
+   ============================================================================= */
+@media (max-width: 640px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lens-sidebar {
+    display: none;
+  }
+}

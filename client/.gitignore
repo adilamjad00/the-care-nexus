@@ -1,0 +1,16 @@
+# Next.js build output
+.next/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.development.local
+.env.production
+.env.production.local
+
+# Scratch files
+scratch/

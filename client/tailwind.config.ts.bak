@@ -1,0 +1,59 @@
+import type { Config } from "tailwindcss";
+
+export default {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "var(--color-primary)",
+          hover: "var(--color-primary-hover)",
+          light: "var(--color-primary-light)",
+          muted: "var(--color-primary-muted)",
+          bg: "var(--color-primary-bg)",
+        },
+        surface: "var(--color-surface)",
+        text: {
+          primary: "var(--color-text-primary)",
+          secondary: "var(--color-text-secondary)",
+          muted: "var(--color-text-muted)",
+        },
+        border: {
+          DEFAULT: "var(--color-border)",
+          light: "var(--color-border-light)",
+        },
+        background: "var(--color-white)",
+        foreground: "var(--color-black)",
+      },
+      fontSize: {
+        heading: ["46px", { lineHeight: "120%", fontWeight: "600" }],
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+      },
+      borderRadius: {
+        xl: "1rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
+      },
+      boxShadow: {
+        lens: "0 4px 24px -6px rgba(0, 0, 0, 0.08)",
+        "lens-hover": "0 12px 32px -8px rgba(0, 0, 0, 0.12)",
+      },
+      keyframes: {
+        scroll: {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "160px 0" },
+        },
+      },
+      animation: {
+        scroll: "scroll 5s linear infinite",
+      },
+    },
+  },
+  plugins: [],
+} satisfies Config;
