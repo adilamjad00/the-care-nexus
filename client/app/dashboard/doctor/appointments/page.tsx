@@ -23,8 +23,8 @@ import {
   ClockIcon,
   TrashIcon,
   CheckedIcon,
-  XIcon,
   UserIcon,
+  XIcon,
 } from '@/icons';
 import { TableSkeleton } from '@/components/ui/Skeleton';
 import AppointmentDetailModal from '@/components/AppointmentDetailModal';
