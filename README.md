@@ -16,27 +16,27 @@ From intelligent appointment handling to AI-assisted prescriptions and automated
   </a>
 
   <!-- ▶️ Live Demo -->
-  <a href="#" target="_blank">
+  <a href="https://thecarenexus.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/Live_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white" />
   </a>
 
   <!-- 📂 GitHub Repo -->
-  <a href="#" target="_blank">
+  <a href="https://github.com/adilamjad00/the-care-nexus" target="_blank">
     <img src="https://img.shields.io/badge/GitHub_Repo-181717?style=for-the-badge&logo=github&logoColor=white" />
   </a>
 
   <!-- 📝 Case Study -->
-  <a href="#" target="_blank">
+  <a href="https://www.aadil-amjad.me/projects/the-care-nexus" target="_blank">
     <img src="https://img.shields.io/badge/📝 Case_Study-4CAF50?style=for-the-badge&logo=&logoColor=white" />
   </a>
 
   <!-- ✍️ Blog -->
-  <a href="#" target="_blank">
+  <a href="https://www.aadil-amjad.me/blog/the-care-nexus" target="_blank">
     <img src="https://img.shields.io/badge/Blog-FF9800?style=for-the-badge&logo=googlescholar&logoColor=white" />
   </a>
 
   <!-- 🔗 LinkedIn Post -->
-  <a href="#" target="_blank">
+  <a href="https://www.linkedin.com/in/adilamjad00" target="_blank">
     <img src="https://img.shields.io/badge/🔗 LinkedIn_Post-0A66C2?style=for-the-badge&logo=&logoColor=white" />
   </a>
 </p>
@@ -140,19 +140,19 @@ This project reflects a strong focus on **scalability, usability, and real-world
 ## Contact
 
 <p align="center">
-  <a href="https://your-portfolio-link.com" target="_blank">
+  <a href="https://www.aadil-amjad.me" target="_blank">
     <img src="https://img.shields.io/badge/Portfolio-black?style=for-the-badge&logo=firefox&logoColor=white" />
   </a>
 
-  <a href="https://www.linkedin.com" target="_blank">
+  <a href="https://www.linkedin.com/in/adilamjad00" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
 
-  <a href="https://github.com" target="_blank">
+  <a href="https://github.com/adilamjad00" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
   </a>
 
-  <a href="mailto:your-email@gmail.com">
+  <a href="mailto:addilarain00@gmail.com">
     <img src="https://img.shields.io/badge/Email-d14836?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
 </p>
